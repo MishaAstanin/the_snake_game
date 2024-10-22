@@ -1,41 +1,41 @@
 from random import choice, randint
-
 import pygame
 
-# Константы для размеров поля и сетки:
+
+# Константы для размеров поля и сетки.
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
 
-# Направления движения:
+# Направления движения.
 UP = (0, -1)
 DOWN = (0, 1)
 LEFT = (-1, 0)
 RIGHT = (1, 0)
 
-# Цвет фона - черный:
+# Цвет фона - черный.
 BOARD_BACKGROUND_COLOR = (0, 0, 0)
 
-# Цвет границы ячейки
+# Цвет границы ячейки.
 BORDER_COLOR = (93, 216, 228)
 
-# Цвет яблока
+# Цвет яблока.
 APPLE_COLOR = (255, 0, 0)
 
-# Цвет змейки
+# Цвет змейки.
 SNAKE_COLOR = (0, 255, 0)
 
-# Скорость движения змейки:
+# Скорость движения змейки.
 SPEED = 10
 
-# Настройка игрового окна:
+# Настройка игрового окна.
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 
-# Заголовок окна игрового поля:
+# Заголовок окна игрового поля.
 pygame.display.set_caption('Змейка')
 
-# Настройка времени:
+# Настройка времени.
 clock = pygame.time.Clock()
 
 
@@ -120,12 +120,12 @@ class Snake(GameObject):
             pygame.draw.rect(screen, self.body_color, rect)
             pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
-        # Отрисовка головы змейки
+        # Отрисовка головы змейки.
         head_rect = pygame.Rect(self.positions[0], (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, head_rect)
         pygame.draw.rect(screen, BORDER_COLOR, head_rect, 1)
 
-        # Затирание последнего сегмента
+        # Затирание последнего сегмента.
         if self.last:
             last_rect = pygame.Rect(self.last, (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(screen, BOARD_BACKGROUND_COLOR, last_rect)
@@ -154,7 +154,7 @@ def handle_keys(game_object):
 
 
 def main():
-
+    """Основной цикл игры."""
     pygame.init()
 
     snake = Snake()
